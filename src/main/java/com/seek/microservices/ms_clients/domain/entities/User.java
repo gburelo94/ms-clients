@@ -3,26 +3,22 @@ package com.seek.microservices.ms_clients.domain.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
-
+@Entity
+@Table(name = "users")
+@Builder
 @Getter
 @Setter
-@Builder
-@Entity
-@Table(name = "clients")
-@AllArgsConstructor
 @NoArgsConstructor
-public class Client {
+@AllArgsConstructor
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String username;
 
-    private String lastname;
+    private String password;
 
-    private int age;
-
-    private LocalDate birthday;
+    private String role;
 }
