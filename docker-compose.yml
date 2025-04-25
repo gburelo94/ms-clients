@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_clientes
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: s0p0rt34dm1n
+      MYSQL_DATABASE: seek_demo
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: h0l4Mund0
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - backend
+
+  app:
+    build: .
+    container_name: clientes-api
+    depends_on:
+      - mysql
+    ports:
+      - "8096:8096"
+    env_file:
+      - .env
+    networks:
+      - backend
+
+volumes:
+  mysql_data:
+
+networks:
+  backend:
