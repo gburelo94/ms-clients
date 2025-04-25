@@ -5,6 +5,9 @@ FROM openjdk:21-jdk-slim
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
+RUN echo $JAVA_HOME
+RUN java -version
+
 # Directorio de trabajo
 WORKDIR /app
 
